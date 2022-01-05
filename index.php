@@ -453,16 +453,18 @@ function showProduct(id){
     if(res.success == 1){
        $("#title").text(res.data[0].name);
        $.each(res.data,function(){
-         $.each(this.attribute,function(){
-            attr = '<span>'+this.name+':</span>';
-            attr += '<select name="option[]" class="form-control">';
-            attr += '<option value="">--</option>';
-           $.each(this.config,function(){
-             attr += '<option value="'+this.id+'">'+this.value+'</option>';
+         if(this.type == 2){
+           $.each(this.attribute,function(){
+              attr = '<span>'+this.name+':</span>';
+              attr += '<select name="option[]" class="form-control">';
+              attr += '<option value="">--</option>';
+             $.each(this.config,function(){
+               attr += '<option value="'+this.id+'">'+this.value+'</option>';
+             });
+             attr += '</select>';
+             $('#proOp').append(attr);
            });
-           attr += '</select>';
-           $('#proOp').append(attr);
-         });
+         }
          $.each(this.images,function(){
           imgs = "<div class='col-sm-6'> <img class='img' src='"+imgurl+this.path+"'/></div>";
          });
