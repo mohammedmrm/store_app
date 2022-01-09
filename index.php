@@ -13,7 +13,6 @@ include_once("config.php");
     <link href="https://fonts.googleapis.com/css?family=Cairo:300,300i,400,400i,500,500i,700,700i,900,900i|Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles/style.css">
     <link rel="stylesheet" type="text/css" href="styles/framework.css">
-    <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
     <link rel="stylesheet" type="text/css" href="bootstrap-4.3.1-dist/css/toast.css">
     <link rel="stylesheet" type="text/css" href="bootstrap-4.3.1-dist/css/bootstrap.min.css">
@@ -32,7 +31,6 @@ include_once("config.php");
         padding-top: 0px; */
         overflow: hidden;
     }
-
 
     a:hover{
       text-decoration: none;
@@ -180,12 +178,13 @@ include_once("config.php");
                     <div class="form-group row">
                       <div class="col-lg-6 kt-margin-b-10-tablet-and-mobile">
                         <label>المدينة</label>
-                        <select data-live-search="true" onchange="getTowns($('#town'),$(this).val());" class="selectpicker form-control" id="city" name="city"></select>
+                        <select data-live-search="true" onchange="getTowns($('#town'),$(this).val());" class=" form-control" id="city" name="city"></select>
                         <span class="form-text text-danger" id="city_err"></span>
                       </div>
                       <div class="col-lg-6 kt-margin-b-10-tablet-and-mobile">
                         <label>القضاء او الناحية او المنطقة</label><br />
-                        <select data-live-search="true" class="selectpicker form-control" id="town" name="town"></select>
+                        <select data-live-search="true" class=" form-control" id="town" name="town">
+                        </select>
                         <span class="form-text text-danger" id="town_err"></span>
                       </div>
                     </div>
@@ -270,6 +269,9 @@ include_once("config.php");
     <script type="text/javascript" src="scripts/config.js"></script>
     <script type="text/javascript" src="scripts/plugins.js"></script>
     <script type="text/javascript" src="scripts/custom.js"></script>
+    <script type="text/javascript" src="bootstrap-4.3.1-dist/js/bootstrap.bundle.min.js" ></script>
+    <link href="styles/select2-4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="styles/select2-4.0.13/dist/js/select2.min.js"></script>
     <script type="text/javascript">
 function getCities(elem){
    $.ajax({
@@ -304,12 +306,16 @@ function getTowns(elem, city) {
     success: function (res) {
       elem.html("");
       $.each(res.data, function () {
-        elem.append(
-          "<option value='" + this.id + "'>" + this.name + "</option>"
-        );
-      });
+       //elem.append("<option value='" + this.id + "'>" + this.name + "</option>");
       //elem.selectpicker('refresh');
-      //console.log(res);
+      var option = new Option(this.name, this.id, false, false);
+        $("#town").append(option);
+      });
+
+     $("#town").select2({
+            placeholder: "- اختر المنطقه -",
+             dropdownParent: $('#createBasketModal')
+     });
     },
     error: function (e) {
       elem.append(
@@ -319,6 +325,9 @@ function getTowns(elem, city) {
     },
   });
 }
+
+
+
 function getCategories(elem){
    $.ajax({
      url:apiurl+"_getCategories.php",
