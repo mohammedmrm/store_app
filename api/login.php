@@ -25,8 +25,8 @@ try {
       $code = 200;
       $data['login'] = 1;
       $data['phone'] = $result[0]['phone'];
-      $data['userid'] = $result[0]['id'];
-      $data['name'] = $result[0]['name'];
+      $data['userid']= $result[0]['id'];
+      $data['name']  = $result[0]['name'];
       $token = $result[0]['api_token'];
       if ($result[0]['api_token'] == "" || $result[0]['api_token'] == 0 || empty($result[0]['api_token']) || $result[0]['api_token'] = null) {
         $token = uniqid() . uniqid() . uniqid() . uniqid();
