@@ -611,7 +611,7 @@ include_once("config.php");
             if (res.data.status == 1 || res.data.status == "1") {
               $("#btns2").append(
                 `<div class="input-group input-group-md mb-3">
-                <input type="number" min="0" step="250" onchange="updatePrice()" class="form-control" value="0" id="discount" name="discount" aria-label="Small" aria-describedby="search">
+                <input type="number" min="0" step="250" onkeyup="updatePrice(${res.data.total_price})" class="form-control" value="0" id="discount" name="discount" aria-label="Small" aria-describedby="search">
                 <div class="input-group-prepend">
                   <button type="button" class="input-group-text" onclick="sendBasket2(` + res.data.id + `)" >ارسال <i class="fa fa-send"></i></button>
                 </div>
@@ -645,9 +645,8 @@ include_once("config.php");
       });
     }
 
-    function updatePrice() {
-      total = $("#total_price").val();
-      $("#total_price").val((Number(total) - Number($("#discount").val())))
+    function updatePrice(total) {
+      $("#total_price").text((Number(total) - Number($("#discount").val())));
     }
 
     function sendBasket2(id) {
