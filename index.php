@@ -87,7 +87,7 @@ include_once("config.php");
     </div>
   </div>
 
-  <div class="modal fade" id="productDetails" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal fade" id="productDetails" tabindex="-1" role="dialog" aria-labelledby="productDetails" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -110,7 +110,7 @@ include_once("config.php");
       </div>
     </div>
   </div>
-  <div class="modal fade" id="basketsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal fade" id="basketsModal" tabindex="-1" role="dialog" aria-labelledby="basketsModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -144,7 +144,41 @@ include_once("config.php");
       </div>
     </div>
   </div>
-  <div class="modal fade" id="createBasketModal" tabindex="-1" role="dialog" aria-labelledby="createBasketModal" data-backdrop="" aria-hidden="true">
+  <div class="modal fade" id="showItemsModal" tabindex="-1" role="dialog" aria-labelledby="showItemsModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h5 class="modal-title text-left" id="title"></h5>
+
+        </div>
+        <div class="modal-body">
+          <div>
+            <h3><span>المبلغ: </span><span class="price" id="total_price">0</span></h3>
+            <table class="table table-striped" id="tb-items">
+              <thead>
+                <tr>
+                  <th>صوره</th>
+                  <th>الاسم</th>
+                  <th>حذف</th>
+                </tr>
+              </thead>
+              <tbody id="items">
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div id="btns2" class="col-12">
+        </div>
+        <div class="modal-footer text-right">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="createBasketModal" tabindex="-1" role="dialog" aria-labelledby="createBasketModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -230,40 +264,7 @@ include_once("config.php");
       </div>
     </div>
   </div>
-  <div class="modal fade" id="showItemsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <h5 class="modal-title text-left" id="title"></h5>
 
-        </div>
-        <div class="modal-body">
-          <div>
-            <h3><span>المبلغ: </span><span class="price" id="total_price">0</span></h3>
-            <table class="table table-striped" id="tb-items">
-              <thead>
-                <tr>
-                  <th>صوره</th>
-                  <th>الاسم</th>
-                  <th>حذف</th>
-                </tr>
-              </thead>
-              <tbody id="items">
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div id="btns2" class="col-12">
-        </div>
-        <div class="modal-footer text-right">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <script type="text/javascript" src="scripts/config.js"></script>
   <script type="text/javascript" src="scripts/plugins.js"></script>
@@ -606,10 +607,10 @@ include_once("config.php");
           }
           if (res.success == 1) {
             $("#total_price").text(res.data.total_price);
-            $("#btns").html("");
+            $("#btns2").html("");
             if (res.data.status == 1 || res.data.status == "1") {
               $("#btns2").append(
-                `  <div class="input-group input-group-md mb-3">
+                `<div class="input-group input-group-md mb-3">
                 <input type="number" min="0" step="250" onchange="updatePrice()" class="form-control" value="0" id="discount" name="discount" aria-label="Small" aria-describedby="search">
                 <div class="input-group-prepend">
                   <button type="button" class="input-group-text" onclick="sendBasket2(` + res.data.id + `)" >ارسال <i class="fa fa-send"></i></button>
