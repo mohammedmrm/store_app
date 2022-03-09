@@ -48,6 +48,10 @@ include_once("config.php");
       font-size: 14px;
     }
 
+    .modal {
+      overflow: auto !important;
+    }
+
     .otherDetails {
       padding-right: 10px;
     }
@@ -473,7 +477,7 @@ include_once("config.php");
           $("#proD").removeClass("loading");
           $('#proOp').html("");
           $('#proD').html("");
-          $('#btns').html("");
+          //$('#btns').html("");
           console.log(res);
           if (res.code == 300 || res.code == 301) {
             window.location.href = "login.php";
