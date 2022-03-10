@@ -95,7 +95,7 @@ include_once("config.php");
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close" data-bs-dismiss="modal" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
           <h5 class="modal-title text-left" id="title"></h5>
@@ -182,7 +182,7 @@ include_once("config.php");
       </div>
     </div>
   </div>
-  <div class="modal fade" id="createBasketModal" tabindex="-1" role="dialog" aria-labelledby="createBasketModal" aria-hidden="true">
+  <div class="modal fade" id="createBasketModal" tabindex="-1" role="dialog" data-backdrop="" aria-labelledby="createBasketModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
