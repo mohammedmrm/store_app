@@ -277,6 +277,12 @@ include_once("config.php");
   <link href="styles/select2-4.0.13/dist/css/select2.min.css" rel="stylesheet" />
   <script src="styles/select2-4.0.13/dist/js/select2.min.js"></script>
   <script type="text/javascript">
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+      });
+    }
+
     function getCities(elem) {
       $.ajax({
         url: apiurl + "_getCities.php",
