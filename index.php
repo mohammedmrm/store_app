@@ -279,9 +279,7 @@ include_once("config.php");
   <script src="styles/select2-4.0.13/dist/js/select2.min.js"></script>
   <script type="text/javascript">
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js')
-      });
+      avigator.serviceWorker.register('/sw.js');
     }
 
     function getCities(elem) {
