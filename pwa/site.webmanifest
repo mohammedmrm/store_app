@@ -1,7 +1,7 @@
 {
     "name": "تطبيق المخزن",
     "short_name": "تطبيق المخزن",
-    "start_url": "/store-app/",
+    "start_url": "/store_app/",
     "icons": [
         {
             "src": "/store_app/pwa/icon-192x192.png",
@@ -14,7 +14,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#DB4437",
-    "background_color": "#DB4437",
+    "theme_color": "#DBc437",
+    "background_color": "#DBc437",
     "display": "standalone"
 }
