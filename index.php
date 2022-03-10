@@ -274,7 +274,6 @@ include_once("config.php");
   <script type="text/javascript" src="scripts/plugins.js"></script>
   <script type="text/javascript" src="scripts/custom.js"></script>
   <script type="text/javascript" src="sw_reg.js"></script>
-  <script type="text/javascript" src="bootstrap-4.3.1-dist/js/bootstrap.bundle.min.js"></script>
   <link href="styles/select2-4.0.13/dist/css/select2.min.css" rel="stylesheet" />
   <script src="styles/select2-4.0.13/dist/js/select2.min.js"></script>
   <script type="text/javascript">
@@ -283,7 +282,6 @@ include_once("config.php");
         navigator.serviceWorker.register('sw.js');
       });
     }
-
 
     function getCities(elem) {
       $.ajax({
@@ -745,16 +743,6 @@ include_once("config.php");
       });
     }
   </script>
-  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-messaging.js"></script>
-
-  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
-  <!--<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-analytics.js"></script>
--->
-  <!-- Add Firebase products that you want to use -->
-  <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-firestore.js"></script>
   <script>
     $('img').on('error', function() {
       this.src = 'img/default.svg';
