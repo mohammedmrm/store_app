@@ -1,6 +1,7 @@
 window.addEventListener("load", () => {
   registerSW();
 });
+registerSW();
 window.addEventListener("beforeinstallprompt", (e) => {
   // prevent chrome 67 and earlier from automatically showing the prompt.
   e.preventDefault();
