@@ -32,7 +32,7 @@ window.addEventListener("appinstalled", (evt) => {
 async function registerSW() {
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker
-      .register("/store_app/sw.js")
+      .register("sw.js")
       .then(function (registration) {
         console.log(
           "Service Worker registered with scope:",
