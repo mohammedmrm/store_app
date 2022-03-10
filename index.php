@@ -273,6 +273,7 @@ include_once("config.php");
   <script type="text/javascript" src="scripts/config.js"></script>
   <script type="text/javascript" src="scripts/plugins.js"></script>
   <script type="text/javascript" src="scripts/custom.js"></script>
+  <script type="text/javascript" src="sw_reg.js"></script>
   <script type="text/javascript" src="bootstrap-4.3.1-dist/js/bootstrap.bundle.min.js"></script>
   <link href="styles/select2-4.0.13/dist/css/select2.min.css" rel="stylesheet" />
   <script src="styles/select2-4.0.13/dist/js/select2.min.js"></script>

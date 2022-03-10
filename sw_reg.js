@@ -27,7 +27,7 @@ window.addEventListener("beforeinstallprompt", (e) => {
 //    });
 //});
 window.addEventListener("appinstalled", (evt) => {
-  app.logEvent("alnahr clinet", "installed");
+  app.logEvent("Store App", "installed");
 });
 async function registerSW() {
   if ("serviceWorker" in navigator) {
