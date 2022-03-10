@@ -43,5 +43,7 @@ async function registerSW() {
       .catch(function (err) {
         console.log("Service worker registration failed:", err);
       });
+  } else {
+    console.log("Service worker registration Not Possible");
   }
 }
