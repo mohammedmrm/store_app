@@ -715,6 +715,8 @@ include_once("config.php");
           if (res.success == 1) {
             getBaskets();
             //$('#createBasketModal').modal('hide');
+            $("#createBasketModal .close").click();
+            $("#createBasketModal .close").trigger("click");
             $("#customer_name").val("");
             $("#customer_phone").val("");
             $("#address").val("");
