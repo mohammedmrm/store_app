@@ -108,8 +108,9 @@ include_once("config.php");
           </form>
         </div>
         <div class="modal-footer text-right">
-          <div id="btns"></div>
-          &nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+          <div id="Pro-btns"></div>
+          &nbsp;&nbsp;&nbsp;
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
         </div>
       </div>
     </div>
@@ -483,7 +484,7 @@ include_once("config.php");
           $("#proD").removeClass("loading");
           $('#proOp').html("");
           $('#proD').html("");
-          //$('#btns').html("");
+          $('#Pro-btns').html("");
           console.log(res);
           if (res.code == 300 || res.code == 301) {
             window.location.href = "login.php";
@@ -509,7 +510,7 @@ include_once("config.php");
 
               $("#proD").append(imgs + '<h3>السعر: ' + this.price + '</h3><h5>الوصف:</h5>' + '<p>' + this.simple_des + '</p>');
             });
-            $("#btns").append('<button type="button" class="btn btn-warning" onclick="updateProId(' + id + ');getBaskets()" data-toggle="modal" data-target="#basketsModal">اضافه للسله</button> ')
+            $("#Pro-btns").append('<button type="button" class="btn btn-warning" onclick="updateProId(' + id + ');getBaskets()" data-toggle="modal" data-target="#basketsModal">اضافه للسله</button> ')
           }
         },
         error: function(e) {
@@ -716,7 +717,7 @@ include_once("config.php");
             $("#customer_name").val("");
             $("#customer_phone").val("");
             $("#address").val("");
-            //$("#city").val("");
+            $("#city").val("");
             $("#note").val("");
             $('#customer_name_err').text('');
             $('#customer_phone_err').text('');
