@@ -459,7 +459,7 @@ include_once("config.php");
                   <div class="content  list-columns-right" style="margin:0 !important;" >     
                     <div class="row" >     
                       <div class="col-3" >     
-                        <img style="height:100%;position:relative; padding:0;margin:0 !important;" src="${img}">     
+                        <img style="height:100%;position:relative; padding:0;margin:0 !important;" src="${imgurl + "" + this.img}">     
                       </div>     
                       <div class="col-9 otherDetails">     
                         <h5 class="text-center">${this.name}</h5>     
