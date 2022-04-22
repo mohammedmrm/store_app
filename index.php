@@ -430,26 +430,33 @@ include_once("config.php");
             window.location.href = "login.php";
           }
           $.each(res.data, function() {
+            sizes = "";
+            $.each(this.attribute[0].config, function() {
+              if (this.qty > 0) {
+                sizes += `
+                <span class="badge badge-dark">${this.value}</span>
+                `
+              }
+            });
             $("#products").append(
-              '<div class="content-boxed">' +
-              '<a href="#"  onclick="showProduct(' + this.id + ')" data-toggle="modal" data-target="#productDetails">' +
-              '<div class="content  list-columns-right" style="margin:0 !important;" >' +
-              '<div class="row" >' +
-              '<div class="col-3" >' +
-              '<img style="height:100%;position:relative; padding:0;margin:0 !important;" src="' + imgurl + this.img + '">' +
-              '</div>' +
-              '<div class="col-9 otherDetails">' +
-              '<h5 class="text-center">' + this.name + '</h5>' +
-              '<span class="text-right price"> &nbsp;السعر:&nbsp;' + this.price + '</span>' +
-              '<p class=" text-center text-white">' +
-              this.des +
-              '</p>' +
-
-              '</div>' +
-              '</div>' +
-              '</div>' +
-              '</a>' +
-              '</div>'
+              `<div class="content-boxed">     
+                <a href="#"  onclick="showProduct(${this.id})" data-toggle="modal" data-target="#productDetails">     
+                  <div class="content  list-columns-right" style="margin:0 !important;" >     
+                    <div class="row" >     
+                      <div class="col-3" >     
+                        <img style="height:100%;position:relative; padding:0;margin:0 !important;" src="${imgurl +""+ this.img}">     
+                      </div>     
+                      <div class="col-9 otherDetails">     
+                        <h5 class="text-center">${this.name}</h5>     
+                        <span class="text-right price"> &nbsp;السعر:&nbsp;${this.price}</span>     
+                        <span class="text-right">     
+                          ${sizes}   
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>`
             );
           });
         },
