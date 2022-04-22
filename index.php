@@ -443,12 +443,6 @@ include_once("config.php");
             sizes = "";
             j = 0;
             $.each(this.attribute[0].config, function() {
-
-              if (!exists(imgurl + "" + res.data[i].img)) {
-                img = imgurl + "" + res.data[i].attribute[0].config[j].img;
-              } else {
-                img = imgurl + "" + res.data[i].img;
-              }
               if (this.qty > 0) {
                 sizes += `
                 <span class="badge badge-dark">${this.value}</span>
@@ -465,7 +459,7 @@ include_once("config.php");
                   <div class="content  list-columns-right" style="margin:0 !important;" >     
                     <div class="row" >     
                       <div class="col-3" >     
-                        <img style="height:100%;position:relative; padding:0;margin:0 !important;" src="${img}">     
+                        <img style="height:100%;position:relative; padding:0;margin:0 !important;" src="${imgurl + "" + this.img}">     
                       </div>     
                       <div class="col-9 otherDetails">     
                         <h5 class="text-center">${this.name}</h5>     
