@@ -62,8 +62,6 @@
       padding: 5px;
       box-shadow: 0px 0px 5px #CCCCCC;
     }
-
-    .basket-control {}
   </style>
   <script type="text/javascript" src="scripts/jquery.js"></script>
   <div id="page">
@@ -225,40 +223,38 @@
       return 1;
     }
 
-    function getTowns(elem, city) {
-      console.log(apiurl);
-      $.ajax({
-        url: apiurl + "_getTowns.php",
-        type: "POST",
-        data: {
-          username: sessionStorage.getItem("username"),
-          password: sessionStorage.getItem("password"),
-          city: city
-        },
-        beforeSent: function() {},
-        success: function(res) {
-          elem.html("");
-          $.each(res.data, function() {
-            elem.append("<option value='" + this.id + "'>" + this.name + "</option>");
-            //elem.selectpicker('refresh');
-            //var option = new Option(this.name, this.id, false, false);
-            //$("#town").append(option);
-          });
+    const getTowns = function(elem, city) {
+      return (
+        $.ajax({
+          url: apiurl + "_getTowns.php",
+          type: "POST",
+          data: {
+            username: sessionStorage.getItem("username"),
+            password: sessionStorage.getItem("password"),
+            city: city
+          },
+          beforeSent: function() {},
+          success: function(res) {
+            elem.html("");
+            $.each(res.data, function() {
+              elem.append("<option value='" + this.id + "'>" + this.name + "</option>");
+              //elem.selectpicker('refresh');
+              //var option = new Option(this.name, this.id, false, false);
+              //$("#town").append(option);
+            });
 
-          // $("#town").select2({
-          //   placeholder: "- اختر المنطقه -",
-          //   dropdownParent: $('#createBasketModal')
-          // });
-          console.log(res);
-        },
-        error: function(e) {
-          elem.append(
-            "<option value='' class='bg-danger'>خطأ اتصل بمصمم النظام</option>"
-          );
-          console.log(e);
-        },
-      });
-      return 1;
+            // $("#town").select2({
+            //   placeholder: "- اختر المنطقه -",
+            //   dropdownParent: $('#createBasketModal')
+            // });
+          },
+          error: function(e) {
+            elem.append(
+              "<option value='' class='bg-danger'>خطأ اتصل بمصمم النظام</option>"
+            );
+            console.log(e);
+          },
+        }))
     }
 
     function getBaskets() {
@@ -315,7 +311,6 @@
         }
       });
     }
-
 
     function showItems(id) {
       $.ajax({
@@ -394,7 +389,6 @@
           $("#tb-items").removeClass("loading");
           $('#items').html("");
           $('#btn').html("");
-          console.log(res);
           if (res.code == 300 || res.code == 301) {
             window.location.href = "login.php";
           }
@@ -402,9 +396,9 @@
             $("#customer_name").val(res.data.customer_name);
             $("#customer_phone").val(res.data.customer_phone);
             $("#city").val(res.data.city_id)
-            if (getTowns($("#town"), res.data.city_id)) {
+            getTowns($("#town"), res.data.city_id).then(function() {
               $("#town").val(res.data.town_id);
-            }
+            });
             $("#address").val(res.data.address);
             $("#note").val(res.data.note);
           }
