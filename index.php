@@ -403,6 +403,15 @@ include_once("config.php");
     }
     getStores($("#store"));
 
+    function exists(image_url) {
+      $.get(image_url)
+        .done(function() {
+          return 1
+        }).fail(function() {
+          return 0
+        })
+    }
+
     function search(type = 1, page = 1) {
       $.ajax({
         url: apiurl + "/_products.php",
@@ -429,22 +438,34 @@ include_once("config.php");
           if (res.code == 300 || res.code == 301) {
             window.location.href = "login.php";
           }
+          i = 0;
           $.each(res.data, function() {
             sizes = "";
+            j = 0;
             $.each(this.attribute[0].config, function() {
+
+              if (!exists(imgurl + "" + res.data[i].img)) {
+                img = imgurl + "" + res.data[i].attribute[0].config[j].img;
+              } else {
+                img = imgurl + "" + res.data[i].img;
+              }
               if (this.qty > 0) {
                 sizes += `
                 <span class="badge badge-dark">${this.value}</span>
                 `
               }
+              j++;
             });
+            if (sizes == "") {
+              sizes == "غير متوفر";
+            }
             $("#products").append(
               `<div class="content-boxed">     
                 <a href="#"  onclick="showProduct(${this.id})" data-toggle="modal" data-target="#productDetails">     
                   <div class="content  list-columns-right" style="margin:0 !important;" >     
                     <div class="row" >     
                       <div class="col-3" >     
-                        <img style="height:100%;position:relative; padding:0;margin:0 !important;" src="${imgurl +""+ this.img}">     
+                        <img style="height:100%;position:relative; padding:0;margin:0 !important;" src="${img}">     
                       </div>     
                       <div class="col-9 otherDetails">     
                         <h5 class="text-center">${this.name}</h5>     
@@ -458,6 +479,7 @@ include_once("config.php");
                 </a>
               </div>`
             );
+            i++;
           });
         },
         error: function(e) {
