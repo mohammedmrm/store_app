@@ -459,7 +459,8 @@ include_once("config.php");
                   <div class="content  list-columns-right" style="margin:0 !important;" >     
                     <div class="row" >     
                       <div class="col-3" >     
-                        <img style="height:100%;position:relative; padding:0;margin:0 !important;" src="${imgurl + "" + this.img}">     
+                        <img style="height:100%;position:relative; padding:0;margin:0 !important;" src="${imgurl + "" + this.img}"
+                        onerror='this.onerror=null; this.src="img/default.svg"' />     
                       </div>     
                       <div class="col-9 otherDetails">     
                         <h5 class="text-center">${this.name}</h5>     
@@ -531,7 +532,7 @@ include_once("config.php");
                 });
               }
               $.each(this.images, function() {
-                imgs = "<div class='col-sm-6'> <img class='img' src='" + imgurl + this.path + "'/></div>";
+                imgs = "<div class='col-sm-6'> <img class='img' src='" + imgurl + this.path + "' onerror='this.onerror=null; this.src=\"img/default.svg\"'/></div>";
               });
 
               $("#proD").append(imgs + '<h3>السعر: ' + this.price + '</h3><h5>الوصف:</h5>' + '<p>' + this.simple_des + '</p>');
@@ -661,7 +662,7 @@ include_once("config.php");
               $("#items").append(
                 '<tr>' +
                 '<td>' +
-                '<img src="' + imgurl + this.img + '" height="70px" />' +
+                '<img src="' + imgurl + this.img + '" height="70px" onerror="this.onerror=null; this.src=\'img/default.svg \'" />' +
                 '</td>' +
                 '<td>' +
                 this.sub_name +
