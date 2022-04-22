@@ -522,7 +522,9 @@ include_once("config.php");
                   attr += '<select name="option[]" class="form-control">';
                   attr += '<option value="">--</option>';
                   $.each(this.config, function() {
-                    attr += '<option value="' + this.id + '">' + this.value + '</option>';
+                    if (this.qty > 0) {
+                      attr += '<option value="' + this.id + '">' + this.value + '</option>';
+                    }
                   });
                   attr += '</select>';
                   $('#proOp').append(attr);
