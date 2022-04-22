@@ -443,12 +443,6 @@ include_once("config.php");
             sizes = "";
             j = 0;
             $.each(this.attribute[0].config, function() {
-
-              if (!exists(imgurl + "" + res.data[i].img)) {
-                img = imgurl + "" + res.data[i].attribute[0].config[j].img;
-              } else {
-                img = imgurl + "" + res.data[i].img;
-              }
               if (this.qty > 0) {
                 sizes += `
                 <span class="badge badge-dark">${this.value}</span>
