@@ -771,8 +771,6 @@ include_once("config.php");
         }
       });
     }
-  </script>
-  <script>
     $('img').on('error', function() {
       this.src = 'img/default.svg';
     });
