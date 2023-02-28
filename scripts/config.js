@@ -1,4 +1,4 @@
-var apiurl = "./../akram-store/api/";
-var imgurl = "./../akram-store/img/product/";
+var apiurl = "./../store/api/";
+var imgurl = "./../store/img/product/";
 var username = "";
 var password = "";
