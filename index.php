@@ -237,21 +237,6 @@ include_once("config.php");
                           <textarea type="text" class="form-control" id="note" name="note"></textarea>
                           <span class="form-text text-danger" id="note_err"></span>
                         </div>
-                        <!--<div class="col-lg-6 kt-margin-b-10-tablet-and-mobile">
-                          <label>استبدال؟</label><br />
-                          <input type="checkbox" onclick="replaceStatus()" value="2" id="replace" name="replace" />
-                          <span class="form-text text-danger" id="replace_err"></span>
-                        </div>
-                        <div style="display: none;" class="col-lg-6 kt-margin-b-10-tablet-and-mobile" id="oldOrderDiv">
-                          <label>الطلب السابق</label><br />
-                          <select class="selectpicker form-control" id="oldOrders" name="oldOrder">
-                            <option>--اختر الطلب--</option>
-                          </select>
-                          <span class="form-text text-danger" id="oldOrder_err"></span>
-                        </div>
-                      </div>
-                      <span class="form-text text-danger" id="staff_password_err"></span>
-                    </div>-->
                       </div>
 
                     </div>
@@ -683,6 +668,41 @@ include_once("config.php");
 
     function updatePrice(total) {
       $("#total_price").text((Number(total) - Number($("#discount").val())));
+    }
+
+    function deleteItem(bi_id, id) {
+      if (confirm("هل انت متاكد من الحذف؟")) {
+        $.ajax({
+          url: apiurl + "_deleteItemFromBasket.php",
+          type: "POST",
+          data: {
+            username: sessionStorage.getItem("username"),
+            password: sessionStorage.getItem("password"),
+            id: bi_id,
+            basket: id
+          },
+          beforeSend: function() {
+            $("#tb-items").addClass("loading");
+          },
+          success: function(res) {
+            $("#tb-items").removeClass("loading");
+            console.log(res);
+            if (res.code == 300 || res.code == 301) {
+              window.location.href = "login.php";
+            }
+            if (res.success == 1) {
+              Toast.success("تم الحذف");
+              showItems(id)
+            } else {
+              Toast.success(res.error.id, "خطأ");
+            }
+          },
+          error: function(e) {
+            $("#tb-items").removeClass("loading");
+            console.log(e);
+          }
+        });
+      }
     }
 
     function sendBasket2(id) {
